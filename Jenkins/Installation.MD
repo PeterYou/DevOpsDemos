@@ -10,6 +10,20 @@ Jenkins is a self-contained Java-based program, ready to run out-of-the-box, wit
 1. Java v1.8.x 
 
 ## Install Java
+RHEL8 EC2 way
+yum -y install java-11-openjdk-devel
+vi /etc/profile.d/java.sh
+"""
+export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))
+export PATH=$PATH:$JAVA_HOME/bin
+export JRE_HOME=/usr/lib/jvm/jre
+export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
+"""
+source /etc/profile.d/java.sh
+
+
+
+
 We will be using open java for our demo, Get latest version from http://openjdk.java.net/install/
 ```sh
 yum install java-1.8*
