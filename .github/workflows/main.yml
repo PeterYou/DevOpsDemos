@@ -3,7 +3,7 @@ name: test-gh-action-workflow
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   test-job:
