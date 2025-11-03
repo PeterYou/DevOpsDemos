@@ -1,0 +1,20 @@
+name: test-gh-action-workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print welcome
+        run: echo "Welcom to out first gh action workflow"
+        
+      - name: Checkout Repo
+        uses: actions/checkout@v5.0.0
+
+      - name: List repo Files
+        run: ls -la
