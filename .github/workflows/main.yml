@@ -3,7 +3,7 @@ name: pr-webhooks
 on:
   push:
     paths:
-      - "src/**"
+      - "Docker/**"
   pull_request:
     branches:
       - master
@@ -16,4 +16,4 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v5.0.0
     - name: list files in src
-      run: ls -la ./src
+      run: ls -la ./Docker
