@@ -1,4 +1,4 @@
-name: test-webhooks
+name: pr-webhooks
 
 on:
   push:
