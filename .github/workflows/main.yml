@@ -1,20 +1,19 @@
-name: test-gh-action-workflow
+name: test-webhooks
 
 on:
   push:
+    paths:
+      - "src/**"
+  pull_request:
     branches:
       - master
+      - "releases/**"
 
 jobs:
-  test-job:
+  validation:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print welcome
-        run: echo "Welcom to out first gh action workflow"
-        
-      - name: Checkout Repo
-        uses: actions/checkout@v5.0.0
-
-      - name: List repo Files
-        run: ls -la
+    - name: Checkout code
+      uses: actions/checkout@v5.0.0
+    - name: list files in src
+      run: ls -la ./src
