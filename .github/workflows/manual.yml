@@ -1,0 +1,15 @@
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Deploy Application
+              run: |
+                  echo "Starting deployment..."
+                  # Add your deployment commands here
+                  echo "Deployment completed."
