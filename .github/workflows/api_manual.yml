@@ -1,0 +1,12 @@
+on:
+    repository_dispatch:
+      types: [incident_rep]
+
+jobs:
+    handle_incident:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3 
+            - name: Handle Incident Report
+              run: echo "Incident report received and being processed."
