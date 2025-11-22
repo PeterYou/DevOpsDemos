@@ -3,7 +3,7 @@ name: test-webhooks
 on:
   push:
     paths:
-      - "src/**"
+      - "Docker/**"
   pull_request:
     branches:
       - master
