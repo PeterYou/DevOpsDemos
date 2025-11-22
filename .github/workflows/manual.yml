@@ -19,6 +19,6 @@ jobs:
 
             - name: Deploy Application
               run: |
-                  echo "Starting deployment..."
+                  echo "Starting deployment to ${{ inputs.environment }}..."
                   # Add your deployment commands here
-                  echo "Deployment completed."
+                  echo "Deployment to ${{ inputs.environment }} completed."
