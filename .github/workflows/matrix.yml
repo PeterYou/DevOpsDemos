@@ -5,16 +5,30 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      max_parallel: 3
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node_version: [14.x, 15.x, 16.x]
-
+    name: Node ${{ matrix.node-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
+    strategy:
+      fail-fast: false # Continues running other jobs even if one fails
+      matrix:
+        # "All available runners" typically refers to the three standard GitHub-hosted OS types
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [14.x, 15.x, 16.x]
+
     steps:
-      - uses: actions/setup-node@v6.0.0
-        with:
-          node-version: ${{ matrix.node_version }}
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build --if-present
+
+    - name: Run tests
+      run: npm test
