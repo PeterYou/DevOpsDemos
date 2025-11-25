@@ -1,0 +1,18 @@
+on:
+    workflow_dispatch:
+
+jobs:
+    hybrid_job:
+        runs-on: ubuntu-latest
+        steps:
+        - run: echo "Runs on Ubuntu Runner"
+        - uses: docker://alpine:3.14
+          with:
+            entrypoint: /bin/bash
+            args:
+              - -c
+              - |
+                echo "On the Container"
+                uname -a
+              
+    
