@@ -1,19 +1,15 @@
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    hybrid_job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: run at vm
-          run: echo "Runs on Ubuntu Runner"
-        - name: docker
-          uses: docker://alpine:3.14
-          with:
-            entrypoint: /bin/bash
-            args:
-              - -c
-              - |
-                echo "On the Container"
-              
-    
+  hybrid_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run at vm
+        run: echo "Runs on Ubuntu Runner"
+
+      - name: docker
+        uses: docker://alpine:3.14
+        with:
+          entrypoint: /bin/sh
+          args: -c "echo 'On the Container'"
